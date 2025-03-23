@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -32,9 +33,14 @@ public class UDRController {
         @ApiResponse(responseCode = "404", description = "Абонент не найден")
     })           
     @GetMapping("/subscriber")
-    public ResponseEntity<UDR> getUDRForSubscriber(@Parameter(description = "Номер абонента", required = true) 
+    public ResponseEntity<UDR> getUDRForSubscriber(
+            @Parameter(description = "Номер абонента", required = true) 
             @RequestParam String msisdn,
+            @Parameter(description = "Дата начала периода (формат: yyyy-MM-dd'T'HH:mm:ss)", required = false)
+            @Schema(format = "date-time", example = "2023-10-01T00:00:00")
             @RequestParam(required = false) String startDate,
+            @Parameter(description = "Дата окончания периода (формат: yyyy-MM-dd'T'HH:mm:ss)", required = false)
+            @Schema(format = "date-time", example = "2023-10-01T00:00:00")
             @RequestParam(required = false) String endDate) {
         
         LocalDateTime start;
@@ -61,8 +67,10 @@ public class UDRController {
     @GetMapping("/all")
     public ResponseEntity<List<UDR>> getUDRsForAllSubscribers(
             @Parameter(description = "Дата начала периода (формат: yyyy-MM-dd'T'HH:mm:ss)", required = false)
+            @Schema(format = "date-time", example = "2023-10-01T00:00:00")
             @RequestParam(required = false) String startDate,
             @Parameter(description = "Дата окончания периода (формат: yyyy-MM-dd'T'HH:mm:ss)", required = false)
+            @Schema(format = "date-time", example = "2023-10-01T00:00:00")
             @RequestParam(required = false) String endDate) {
 
         LocalDateTime start;

@@ -1,7 +1,7 @@
 package com.nexign.service.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +15,7 @@ public class CDRController {
 
     private CdrGeneratorService cdrGeneratorService;
 
-    @GetMapping("/generate")
+    @PostMapping("/generate")
     public String generateCDR() {
         cdrGeneratorService.generateCDR(1000);
         return "CDR созданы";
