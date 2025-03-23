@@ -12,17 +12,30 @@ import com.nexign.service.Entity.Subscriber;
 import com.nexign.service.Repository.CDRRepository;
 import com.nexign.service.Repository.SubscriberRepository;
 
+/**
+ * Service для работы с CDR.
+ * Предоставляет методы для генерации и записи cdr в БД.
+ * @author Влад 
+ */
 @Service
 public class CdrGeneratorService {
 
+    /** Репозиторий для работы с абонентами */
     @Autowired
     private SubscriberRepository subscriberRepository;
-
+     
+    /** Репозиторий для работы с CDR записями */
     @Autowired
     private CDRRepository cdrRepository;
 
+    /** Поле для генеарции случайных чисел */
     private final Random random = new Random();
 
+    /**
+    * Создает случайные записи cdr и сохраняет их в БД.
+    *
+    * @param countOfRecords количество записей, которые будут созданы.
+    */
     public void generateCDR(int countOfRecords){
 
         List<Subscriber> subscribers = subscriberRepository.findAll();
