@@ -14,16 +14,31 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * Контроллер для работы с UDR записями.
+ * Предоставляет методы для получения UDR записей для одного абонента и для всех абонентов.
+ * @author Влад Останин
+ */
 @RestController
 @RequestMapping("/api/v1/udr")
 public class UDRController {
 
+    /** Сервис для работы с UDR записями */
     @Autowired
     private UDRService udrService;
 
+    /**
+    * Получает UDR запись для указанного абонента за запрашиваемый период.
+    *
+    * @param msisdn Номер абонента, для которого требуется получить UDR запись.
+    * @param startDate Дата начала периода (формат: yyyy-MM-dd'T'HH:mm:ss). 
+    *                  Если не указана, используется первая дата текущего месяца.
+    * @param endDate Дата окончания периода (формат: yyyy-MM-dd'T'HH:mm:ss). 
+    *                Если не указана, используется последняя дата текущего месяца.
+    * @return UDR запись для указанного абонента.
+    */
     @Operation(summary = "Получить UDR запись для абонента",
                description = "Возвращает UDR запись для указанного абонента за запрашиваемый период.",
                tags = {"UDR"})
@@ -56,7 +71,15 @@ public class UDRController {
         return ResponseEntity.ok(udr);
     }
 
-
+/**
+    * Получает UDR запись для всех абонентов за запрашиваемый период.
+    *
+    * @param startDate Дата начала периода (формат: yyyy-MM-dd'T'HH:mm:ss). 
+    *                  Если не указана, используется первая дата текущего месяца.
+    * @param endDate Дата окончания периода (формат: yyyy-MM-dd'T'HH:mm:ss). 
+    *                Если не указана, используется последняя дата текущего месяца.
+    * @return UDR запись для всех абонентов.
+    */
     @Operation(summary = "Получить UDR запись для всех абонентов",
                description = "Возвращает UDR запись для всех абонентов за запрашиваемый период.",
                tags = {"UDR"})
