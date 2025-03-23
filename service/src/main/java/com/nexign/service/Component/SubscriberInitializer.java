@@ -4,10 +4,12 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import com.nexign.service.Entity.Subscriber;
 import com.nexign.service.Repository.SubscriberRepository;
 
+@Component
 public class SubscriberInitializer implements CommandLineRunner{
  
     @Autowired
