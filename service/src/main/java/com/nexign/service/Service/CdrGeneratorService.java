@@ -36,7 +36,7 @@ public class CdrGeneratorService {
 
             Subscriber caller = subscribers.get(random.nextInt(subscribers.size()));
             Subscriber receiver = subscribers.get(random.nextInt(subscribers.size()));
-            
+
             String callType = random.nextBoolean() ? "01" : "02"; 
             LocalDateTime startTime = currentTime.minusDays(random.nextInt(365)).minusHours(random.nextInt(24)).minusMinutes(random.nextInt(60));
             int duration = random.nextInt(10000) + 60; 
