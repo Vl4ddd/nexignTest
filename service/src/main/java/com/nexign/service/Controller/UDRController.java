@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Контроллер для работы с UDR записями.
  * Предоставляет методы для получения UDR записей для одного абонента и для всех абонентов.
- * @author Влад Останин
+ * @author Влад 
  */
 @RestController
 @RequestMapping("/api/v1/udr")

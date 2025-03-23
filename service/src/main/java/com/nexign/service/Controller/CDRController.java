@@ -14,7 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 /**
  * Контроллер для генерации CDR.
  * Предоставляет методы для генерации и записи данных в БД.
- * @author Влад Останин
+ * @author Влад 
  */
 @RestController
 @RequestMapping("/api/v1/cdr")
