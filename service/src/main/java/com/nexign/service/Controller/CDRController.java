@@ -31,7 +31,7 @@ public class CDRController {
     */
     @Operation(summary = "Сгенерировать и занести данные о звонках абонентов",
                description = "Генерирует записи и вносит их в базу данных.",
-               tags = {"UDR"})
+               tags = {"CDR"})
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Успешно созданы записи"),
         @ApiResponse(responseCode = "400", description = "Ошибка записи"),
