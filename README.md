@@ -1,10 +1,10 @@
 # nexignTest
 
-##Инструкция для запуска
-git clone https://github.com/Vl4ddd/nexignTest
-cd .\nexignTest\service
-mvn clean install
-mvn spring-boot:run
+## Инструкция для запуска  
+git clone https://github.com/Vl4ddd/nexignTest  
+cd .\nexignTest\service  
+mvn clean install    
+mvn spring-boot:run  
 
 ## Endpoints
 Post /api/v1/cdr/generate  
