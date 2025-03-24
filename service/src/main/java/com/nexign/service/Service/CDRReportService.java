@@ -11,10 +11,13 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.nexign.service.Entity.CDR;
 import com.nexign.service.Repository.CDRRepository;
 
+
+@Service
 public class CDRReportService {
 
     /** Репозиторий для работы с CDR записями */
@@ -27,10 +30,8 @@ public class CDRReportService {
         List<CDR> cdrs = cdrRepository.findByCallerNumberAndStartTimeBetween(msisdn, startDate, endDate);
 
         UUID uniqueKey = UUID.randomUUID();
-        
-        String uniqueFileName = msisdn + "_" + uniqueKey.toString();
 
-        Path reportsDir = Paths.get("reports");
+        Path reportsDir = Paths.get("nexignTest/service/src/main/resources/reports");
 
         try {
             if (!Files.exists(reportsDir)) {
@@ -40,6 +41,8 @@ public class CDRReportService {
             e.printStackTrace();
             return; 
         }
+
+        String uniqueFileName = "nexignTest/service/src/main/resources/reports/" + msisdn + "_" + uniqueKey.toString();
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(uniqueFileName))) {
             for (CDR cdr : cdrs) {
