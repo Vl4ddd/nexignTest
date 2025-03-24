@@ -3,6 +3,9 @@ package com.nexign.service.Service;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +30,17 @@ public class CDRReportService {
         
         String uniqueFileName = msisdn + "_" + uniqueKey.toString();
 
+        Path reportsDir = Paths.get("reports");
+
+        try {
+            if (!Files.exists(reportsDir)) {
+                Files.createDirectory(reportsDir);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return; 
+        }
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(uniqueFileName))) {
             for (CDR cdr : cdrs) {
                 writer.write(cdr.toString()); 
@@ -36,8 +50,5 @@ public class CDRReportService {
             e.printStackTrace();
         }
     }
-
-    
-
 
 }
