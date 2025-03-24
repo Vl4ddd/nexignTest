@@ -1,6 +1,7 @@
 package com.nexign.service.Entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +36,16 @@ public class CDR {
         this.receiverNumber = receiverNumber;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return callType + ", " +
+               callerNumber + ", " +
+               receiverNumber + ", " +
+               (startTime != null ? startTime.format(formatter) : "null") + ", " +
+               (endTime != null ? endTime.format(formatter) : "null");
     }
     
 }
