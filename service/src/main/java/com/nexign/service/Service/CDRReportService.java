@@ -16,7 +16,11 @@ import org.springframework.stereotype.Service;
 import com.nexign.service.Entity.CDR;
 import com.nexign.service.Repository.CDRRepository;
 
-
+/**
+ * Service для создания отчетов CDR по абоненту.
+ * Предоставляет методы для создания отчетов.
+ * @author Влад 
+ */
 @Service
 public class CDRReportService {
 
@@ -25,7 +29,13 @@ public class CDRReportService {
     private CDRRepository cdrRepository;
 
 
-
+ /**
+    * Получает номер абонента и промежуток по звонкам и создает на их основе отчет CDR.
+    *
+    * @param msisdn номер абонента.
+    * @param startDate дата, с которой будет произведен поиск.
+    * @param endDate дата, которой будет окончен поиск.
+    */
     public void generateCDRReport(String msisdn, LocalDateTime startDate, LocalDateTime endDate){
         List<CDR> cdrs = cdrRepository.findByCallerNumberAndStartTimeBetween(msisdn, startDate, endDate);
 
