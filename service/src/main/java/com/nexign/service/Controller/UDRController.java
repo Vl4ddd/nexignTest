@@ -55,7 +55,7 @@ public class UDRController {
             @Schema(format = "date-time", example = "2023-10-01T00:00:00")
             @RequestParam(required = false) String startDate,
             @Parameter(description = "Дата окончания периода (формат: yyyy-MM-dd'T'HH:mm:ss)", required = false)
-            @Schema(format = "date-time", example = "2023-10-01T00:00:00")
+            @Schema(format = "date-time", example = "2026-10-01T00:00:00")
             @RequestParam(required = false) String endDate) {
         
         LocalDateTime start;
